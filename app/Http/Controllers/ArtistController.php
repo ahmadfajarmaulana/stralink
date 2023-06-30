@@ -38,7 +38,6 @@ class ArtistController extends Controller
 
     public function store(Request $request)
     {
-
         // dd($request);
         $this->validate($request,[
             'artist_name' => 'required|min:5|max:20',
@@ -76,7 +75,7 @@ class ArtistController extends Controller
         $this->validate($request,[
             'artist_name' => 'required|min:5|max:20',
             'package_name' => 'required',
-            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            // 'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'release_date' => 'required',
             'sample_url' => 'required',
             'price' => 'required|numeric',
@@ -109,7 +108,5 @@ class ArtistController extends Controller
     {
         $artist = Artist::find($id);
         $artist->delete();
-
-        return redirect()->route('artists.index')->with('success', 'Data artist berhasil dihapus.');
     }
 }

@@ -25,3 +25,4 @@ Route::get('/read', [ArtistController::class, 'read']);
 Route::get('/create', [ArtistController::class, 'create']);
 Route::post('/store', [ArtistController::class, 'store']);
 Route::get('/show/{id}', [ArtistController::class, 'show']);
+Route::post('/destroy/{id}', [ArtistController::class, 'destroy']);

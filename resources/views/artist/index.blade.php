@@ -29,6 +29,11 @@
         </div>
     </div>
 
+    <!-- Dialog Modal Konfirmasi -->
+    <div id="confirmationModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        @include('artist.modal.delete')
+    </div>
+
 @endsection
 
 @section('script')
@@ -56,6 +61,31 @@
                 $('#exampleModalLabel').html('Edit Data')
                 $('#page').html(data);
                 $('#exampleModal').modal('show');
+            });
+        }
+
+        function showDestroyModal(id) {
+            console.log(id);
+            $('#confirmationModal').modal('show');
+
+            $('#btn-confirm-delete').on('click', function() {
+
+                console.log(id);
+                $.ajax({
+                    type: "post",
+                    url: "{{ url('destroy') }}/" + id,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data) {
+                        console.log("Data deleted successfully");
+                        $('.btn-close').click();
+                        read();
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Error deleting data: " + error);
+                    }
+                });
             });
         }
 
@@ -118,6 +148,8 @@
                 
             var audioElement = $('#player-' + key)[0];
             var playButton = $('#audio-button-' + key);
+            var defaultButton = $('.btn-playing1');
+            defaultButton.html('<i class="bi bi-play-fill text-white"></i>');
 
             if (audioElement.paused) {
                 $('audio').each(function() {

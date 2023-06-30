@@ -8,7 +8,7 @@
                 <th class="text-center">Date Release</th>
                 <th class="text-center">Audio</th>
                 <th class="text-center">Price</th>
-                <th class="text-center"></th>
+                <th class="text-center" width="100px"></th>
             </tr>
         </thead>
         <tbody>
@@ -31,13 +31,14 @@
                 <td class="text-center"><h6>{{ $item->ReleaseDate }}</h6></td>
                 <td class="text-center">
                     <audio id="player-{{$key+1}}" src="{{ $item->SampleURL }}"></audio>
-                    <button id="audio-button-{{$key+1}}" onclick="playSample({{$key+1}})" class="btn btn-sm btn-playing1 text-center" width="50px"><i class="bi bi-play-fill text-white"></i></button>
+                    <button id="audio-button-{{$key+1}}" onclick="playSample({{$key+1}})" class="btn btn-sm btn-playing1 text-center"><i class="bi bi-play-fill text-white"></i></button>
                 </td>
                 <td><h6>{{ $item->Price }}</h6></td>
                 <td>
                     <div class="d-grid gap-2">
                         <a class="btn btn-primary btn-sm btn-edit rounded shadow" onclick="show({{$item->id}})"><span class="span-btn-edit">Edit</span></a>
-                        <a class="btn btn-sm btn-danger btn-delete rounded shadow"><span class="span-btn-delete">Delete</span></a>
+
+                        <a class="btn btn-sm btn-danger btn-delete rounded shadow" onclick="showDestroyModal({{$item->id}})"><span class="span-btn-delete">Delete</span></a>
                     </div>
                 </td>
             </tr>

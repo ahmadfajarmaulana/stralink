@@ -88,8 +88,9 @@
 
 
         .btn-playing1{
-            background: rgb(29, 29, 199);
-            background: linear-gradient(to bottom , blue , white)
+            background: rgb(25, 25, 122);
+            width: 10px !important:
+            heigt: 10px !important:
         }
         .btn-playing1:hover {
             background: blue;
